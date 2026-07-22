@@ -1,7 +1,36 @@
 import 'package:flutter/material.dart';
 
-class AddProjectIdeaScreen extends StatelessWidget {
+class AddProjectIdeaScreen extends StatefulWidget {
   const AddProjectIdeaScreen({super.key});
+
+  @override
+  State<AddProjectIdeaScreen> createState() => 
+  _AddProjectIdeaScreenState();
+}
+
+class _AddProjectIdeaScreenState extends State<AddProjectIdeaScreen> {
+  String title = '';
+  String description = '';
+  String researchArea = '';
+
+void saveProjectIdea() {
+    if (title.isEmpty || 
+        description.isEmpty || 
+        researchArea.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill in all fields.'),
+        ),
+      );
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Project idea saved successfully.'),
+        ),
+      );
+    }
 
   @override
   Widget build(BuildContext context) {
