@@ -11,6 +11,7 @@ class StaffProfilesScreen extends StatefulWidget {
 
 class _StaffProfilesScreenState extends State<StaffProfilesScreen> {
   String searchText = '';
+  String selectedResearchArea = 'All';
 
   final List<StaffMember> staffMembers = const [
     StaffMember(
@@ -58,10 +59,15 @@ class _StaffProfilesScreenState extends State<StaffProfilesScreen> {
       final String researchAreas =
           staffMember.researchAreas.join(' ').toLowerCase();
 
-      return staffMember.name
-              .toLowerCase()
-              .contains(searchText.toLowerCase()) ||
+      final bool matchesSearch = staffMember.name
+          .toLowerCase()
+          .contains(searchText.toLowerCase()) ||
           researchAreas.contains(searchText.toLowerCase());
+
+      final bool matchesResearchArea = selectedResearchArea == 'All' ||
+          staffMember.researchAreas.contains(selectedResearchArea);
+
+      return matchesSearch && matchesResearchArea;
     }).toList();
 
     return Scaffold(
@@ -82,6 +88,54 @@ class _StaffProfilesScreenState extends State<StaffProfilesScreen> {
                 setState(() {
                   searchText = value;
                 });
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            child: DropdownButtonFormField<String>(
+              initialValue: selectedResearchArea,
+              decoration: const InputDecoration(
+                labelText: 'Filter by research area',
+                prefixIcon: Icon(Icons.filter_list),
+                border: OutlineInputBorder(),
+              ),
+              items: const [
+                DropdownMenuItem(
+                  value: 'All',
+                  child: Text('All research areas'),
+                ),
+                DropdownMenuItem(
+                  value: 'Mobile Application Development',
+                  child: Text('Mobile Application Development'),
+                ),
+                DropdownMenuItem(
+                  value: 'Software Engineering',
+                  child: Text('Software Engineering'),
+                ),
+                DropdownMenuItem(
+                  value: 'Artificial Intelligence',
+                  child: Text('Artificial Intelligence'),
+                ),
+                DropdownMenuItem(
+                  value: 'Machine Learning',
+                  child: Text('Machine Learning'),
+                ),
+                DropdownMenuItem(
+                  value: 'Cybersecurity',
+                  child: Text('Cybersecurity'),
+                ),
+                DropdownMenuItem(
+                  value: 'Network Security',
+                  child: Text('Network Security'),
+                ),
+              ],
+              onChanged: (String? value) {
+                if (value != null) {
+                  setState(() {
+                    selectedResearchArea = value;
+                  });
+                }
               },
             ),
           ),
