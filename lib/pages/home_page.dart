@@ -1,7 +1,6 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:project_supervisor_app/pages/project_ideas.dart';
+import 'package:project_supervisor_app/pages/staff_profiles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -48,20 +47,20 @@ class HomeScreen extends StatelessWidget {
                 },
                 child: const Text('Browse Project Ideas'),
               ),
-              // const SizedBox(height: 12),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (BuildContext context) {
-              //           //return  StaffProfilesScreen();
-              //         },
-              //       ),
-              //     );
-              //   },
-              //   child: const Text('Browse Staff Profiles'),
-              // ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const StaffProfilesScreen();
+                      },
+                    ),
+                  );
+                },
+                child: const Text('Browse Staff Profiles'),
+              ),
               // const SizedBox(height: 12),
               // ElevatedButton(
               //   onPressed: () {
