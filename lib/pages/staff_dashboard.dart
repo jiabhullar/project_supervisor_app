@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_supervisor_app/pages/manage_project_ideas.dart';
 
 class StaffDashboardScreen extends StatelessWidget {
   const StaffDashboardScreen({super.key});
@@ -37,7 +38,14 @@ class StaffDashboardScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      print('Manage project ideas pressed');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const ManageProjectIdeasScreen();
+                          },
+                        ),
+                      );
                     },
                     child: const Text('Manage Project Ideas'),
                   ),
