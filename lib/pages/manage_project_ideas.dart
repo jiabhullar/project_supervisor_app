@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_supervisor_app/pages/add_project_idea.dart';
 
 class ManageProjectIdeasScreen extends StatelessWidget {
   const ManageProjectIdeasScreen({super.key});
@@ -32,6 +33,14 @@ class ManageProjectIdeasScreen extends StatelessWidget {
               const SizedBox(height: 25),
               ElevatedButton.icon(
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const AddProjectIdeaScreen();
+                      },
+                    ),
+                  );
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Add project idea selected.'),
