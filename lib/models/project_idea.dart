@@ -5,7 +5,7 @@ class ProjectIdea {
   final String description;
   final String researchArea;
 
-  ProjectIdea({
+ const ProjectIdea({
     required this.id,
     required this.staffId,
     required this.title,
