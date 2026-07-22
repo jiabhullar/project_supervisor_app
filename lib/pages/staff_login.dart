@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_supervisor_app/pages/staff_dashboard.dart';
 
 class StaffLoginScreen extends StatefulWidget {
   const StaffLoginScreen({super.key});
@@ -19,14 +20,18 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
         ),
       );
       return;
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Login details entered successfully.'),
-        ),
-      );
     }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return const StaffDashboardScreen();
+        },
+      ),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +61,7 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
                     ),
                     const SizedBox(height: 20),
                     TextField(
+                      keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         labelText: 'Email address',
                         prefixIcon: Icon(Icons.email),

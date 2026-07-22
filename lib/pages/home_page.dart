@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_supervisor_app/pages/project_ideas.dart';
-import 'package:project_supervisor_app/pages/staff_profiles.dart';
 import 'package:project_supervisor_app/pages/staff_login.dart';
+import 'package:project_supervisor_app/pages/staff_profiles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const StaffProfilesScreen();
+                        return  StaffProfilesScreen();
                       },
                     ),
                   );
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const StaffLoginScreen();
+                        return  StaffLoginScreen();
                       },
                     ),
                   );
