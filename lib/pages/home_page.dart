@@ -51,14 +51,28 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () {
-                  print('Browse Staff Profiles button pressed');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const StaffProfilesScreen();
+                      },
+                    ),
+                  );
                 },
                 child: const Text('Browse Staff Profiles'),
               ),
               const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () {
-                  print('Staff Login button pressed');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const StaffLoginScreen();
+                      },
+                    ),
+                  );
                 },
                 child: const Text('Staff Login'),
               ),
