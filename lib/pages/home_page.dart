@@ -48,34 +48,34 @@ class HomeScreen extends StatelessWidget {
                 },
                 child: const Text('Browse Project Ideas'),
               ),
-              const SizedBox(height: 12),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return const StaffProfilesScreen();
-                      },
-                    ),
-                  );
-                },
-                child: const Text('Browse Staff Profiles'),
-              ),
-              const SizedBox(height: 12),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return const StaffLoginScreen();
-                      },
-                    ),
-                  );
-                },
-                child: const Text('Staff Login'),
-              ),
+              // const SizedBox(height: 12),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (BuildContext context) {
+              //           //return  StaffProfilesScreen();
+              //         },
+              //       ),
+              //     );
+              //   },
+              //   child: const Text('Browse Staff Profiles'),
+              // ),
+              // const SizedBox(height: 12),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (BuildContext context) {
+              //           //return  StaffLoginScreen();
+              //         },
+              //       ),
+              //     );
+              //   },
+              //   child: const Text('Staff Login'),
+              // ),
             ],
           ),
         ),

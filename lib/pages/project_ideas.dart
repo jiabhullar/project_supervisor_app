@@ -35,34 +35,55 @@ class ProjectIdeasScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Project Ideas'),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(20),
-        itemCount: projectIdeas.length,
-        itemBuilder: (context, index) {
-          final projectIdea = projectIdeas[index];
-          return Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    projectIdea.title,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 10),
-                Text(projectIdea.description),
-                const SizedBox(height: 10),
-                Text(
-                  'Research area: ${projectIdea.researchArea}',
-                  ),
-                ],
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: TextField(
+              decoration: const InputDecoration(
+                labelText: 'Search project ideas',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
               ),
+              onChanged: (String searchText) {
+                // ignore: avoid_print
+                print('Search: $searchText');
+              },
             ),
-          );
-        },
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              itemCount: projectIdeas.length,
+              itemBuilder: (BuildContext context, int index) {
+                final ProjectIdea projectIdea = projectIdeas[index];
+
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          projectIdea.title,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(projectIdea.description),
+                        const SizedBox(height: 10),
+                        Text(
+                          'Research area: ${projectIdea.researchArea}',
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
-    );
-  }
+   );
+ }
 }
