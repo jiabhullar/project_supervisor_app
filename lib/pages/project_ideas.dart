@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_supervisor_app/models/project_idea.dart';
+import 'package:project_supervisor_app/pages/project_details.dart';
 
 class ProjectIdeasScreen extends StatefulWidget {
   const ProjectIdeasScreen({super.key});
@@ -126,32 +127,48 @@ class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
                       final ProjectIdea projectIdea =
                           filteredProjectIdeas[index];
 
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          projectIdea.title,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(projectIdea.description),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Research area: ${projectIdea.researchArea}',
-                        ),
-                      ],
+            return Card(
+              clipBehavior: Clip.antiAlias,
+              margin: const EdgeInsets.only(bottom: 12),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return ProjectDetailsScreen(
+                          projectIdea: projectIdea,
+                        );
+                      },
                     ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        projectIdea.title,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(projectIdea.description),
+                      const SizedBox(height: 10),
+                      Text(
+                        'Research area: ${projectIdea.researchArea}',
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
+                ),
+              ),
+            );
+           },
+         ),
+        ),
+       ],
+
+    ),
    );
  }
 }
