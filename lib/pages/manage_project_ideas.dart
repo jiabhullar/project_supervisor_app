@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_supervisor_app/models/project_idea.dart';
 import 'package:project_supervisor_app/pages/add_project_idea.dart';
 
 class ManageProjectIdeasScreen extends StatelessWidget {
@@ -6,6 +7,26 @@ class ManageProjectIdeasScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const List<ProjectIdea> projectIdeas = [
+      ProjectIdea(
+        id: '1',
+        staffId: 'staff1',
+        title: 'Student Wellbeing Mobile App',
+        description:
+            'Develop a mobile application that provides wellbeing resources '
+            'and allows students to record their mood.',
+        researchArea: 'Mobile Application Development',
+      ),
+      ProjectIdea(
+        id: '2',
+        staffId: 'staff1',
+        title: 'Software Testing Support Tool',
+        description:
+            'Create a tool that helps students organise and record software '
+            'test cases and results.',
+        researchArea: 'Software Engineering',
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Manage Project Ideas'),
