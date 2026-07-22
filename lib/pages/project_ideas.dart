@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:project_supervisor_app/models/project_idea.dart';
 
-class ProjectIdeasScreen extends StatelessWidget {
+class ProjectIdeasScreen extends StatefulWidget {
   const ProjectIdeasScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-     const List<ProjectIdea> projectIdeas = [ ProjectIdea(
+  State<ProjectIdeasScreen> createState() => _ProjectIdeasScreenState();
+}
+
+class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
+  String searchText = ' ';
+
+     final List<ProjectIdea> projectIdeas = const [
+      ProjectIdea(
         id: '1',
         staffId: 'staff1',
         title: 'Student Wellbeing Mobile App',
@@ -30,7 +36,19 @@ class ProjectIdeasScreen extends StatelessWidget {
         researchArea: 'Cybersecurity',
       ),
      ];
-    
+     
+  @override
+  Widget build(BuildContext context) {
+    final List<ProjectIdea> filteredProjectIdeas =
+        projectIdeas.where((ProjectIdea projectIdea) {
+      return projectIdea.title
+              .toLowerCase()
+              .contains(searchText.toLowerCase()) ||
+          projectIdea.researchArea
+              .toLowerCase()
+              .contains(searchText.toLowerCase());
+    }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Project Ideas'),
@@ -54,9 +72,9 @@ class ProjectIdeasScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-              itemCount: projectIdeas.length,
+              itemCount: filteredProjectIdeas.length,
               itemBuilder: (BuildContext context, int index) {
-                final ProjectIdea projectIdea = projectIdeas[index];
+                final ProjectIdea projectIdea = filteredProjectIdeas[index];
 
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
