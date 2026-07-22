@@ -37,13 +37,13 @@ class HomeScreen extends StatelessWidget {
                   print('Browse Project Ideas button pressed');
                 },
                 child: const Text('Browse Project Ideas'),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton(
-              onPressed: () {
-                print('Browse Staff Profiles button pressed');
-              },
-              child: const Text('Browse Staff Profiles'),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  print('Browse Staff Profiles button pressed');
+                },
+                child: const Text('Browse Staff Profiles'),
               ),
               const SizedBox(height: 12),
               ElevatedButton(
