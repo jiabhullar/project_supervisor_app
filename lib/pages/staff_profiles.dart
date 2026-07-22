@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_supervisor_app/models/staff_member.dart';
+import 'package:project_supervisor_app/pages/staff_details.dart';
 
 class StaffProfilesScreen extends StatefulWidget {
   const StaffProfilesScreen({super.key});
@@ -153,34 +154,45 @@ class _StaffProfilesScreenState extends State<StaffProfilesScreen> {
                       final StaffMember staffMember =
                           filteredStaffMembers[index];
 
-                      return Card(
-                        margin:
-                            const EdgeInsets.only(bottom: 12),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                staffMember.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge,
-                              ),
-                              const SizedBox(height: 10),
-                              Text(staffMember.email),
-                              const SizedBox(height: 10),
-                              Text(staffMember.biography),
-                              const SizedBox(height: 10),
-                              Text(
-                                'Research areas: '
-                                '${staffMember.researchAreas.join(', ')}',
-                              ),
-                            ],
-                          ),
-                        ),
+          return Card(
+            clipBehavior: Clip.antiAlias,
+            margin: const EdgeInsets.only(bottom: 12),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return StaffDetailsScreen(
+                        staffMember: staffMember,
                       );
+                    },
+                  ),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      staffMember.name,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(staffMember.email),
+                    const SizedBox(height: 10),
+                    Text(staffMember.biography),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Research areas: '
+                      '${staffMember.researchAreas.join(', ')}',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
                     },
                   ),
           ),
