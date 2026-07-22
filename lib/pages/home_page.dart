@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_supervisor_app/pages/project_ideas.dart';
 import 'package:project_supervisor_app/pages/staff_profiles.dart';
+import 'package:project_supervisor_app/pages/staff_login.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -61,20 +62,20 @@ class HomeScreen extends StatelessWidget {
                 },
                 child: const Text('Browse Staff Profiles'),
               ),
-              // const SizedBox(height: 12),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (BuildContext context) {
-              //           //return  StaffLoginScreen();
-              //         },
-              //       ),
-              //     );
-              //   },
-              //   child: const Text('Staff Login'),
-              // ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const StaffLoginScreen();
+                      },
+                    ),
+                  );
+                },
+                child: const Text('Staff Login'),
+              ),
             ],
           ),
         ),
