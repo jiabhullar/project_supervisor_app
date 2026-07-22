@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const SupervisorApp());
+  runApp(const App());
 }
 
-class SupervisorApp extends StatelessWidget {
-  const SupervisorApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Project Supervisor Hub',
       debugShowCheckedModeBanner: false,
-      title: 'Supervisor App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple),
