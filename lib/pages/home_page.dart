@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:project_supervisor_app/pages/project_ideas.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,7 +37,14 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  print('Browse Project Ideas button pressed');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const ProjectIdeasScreen();
+                      },
+                    ),
+                  );
                 },
                 child: const Text('Browse Project Ideas'),
               ),
