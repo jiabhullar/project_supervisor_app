@@ -80,29 +80,72 @@ class ManageProjectIdeasScreen extends StatelessWidget {
                           'Research area: ${projectIdea.researchArea}',
                         ),
                         const SizedBox(height: 16),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) {
-                                    return EditProjectIdeaScreen(
-                                      projectIdea: projectIdea,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            OutlinedButton.icon(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                      return EditProjectIdeaScreen(
+                                        projectIdea: projectIdea,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                              icon: const Icon(Icons.edit),
+                              label: const Text('Edit'),
+                            ),
+                            const SizedBox(width: 10),
+                            OutlinedButton.icon(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext dialogContext) {
+                                    return AlertDialog(
+                                      title: const Text('Delete Project Idea'),
+                                      content: Text(
+                                        'Are you sure you want to delete '
+                                        '"${projectIdea.title}"?',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(dialogContext);
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(dialogContext);
+
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'Delete will be connected to Firebase later.',
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: const Text('Delete'),
+                                        ),
+                                      ],
                                     );
                                   },
-                                ),
-                              );
-                            },
-                            icon: const Icon(Icons.edit),
-                            label: const Text('Edit'),
-                          ),
+                                );
+                              },
+                              icon: const Icon(Icons.delete_outline),
+                              label: const Text('Delete'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                );
+                ); 
               },
             ),
           ),
