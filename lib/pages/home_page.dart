@@ -31,6 +31,13 @@ class HomeScreen extends StatelessWidget {
                 'final-year project ideas.',
                 textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  print('Browse Project Ideas button pressed');
+                },
+                child: const Text('Browse Project Ideas'),
+            ),
             ],
           ),
         ),
