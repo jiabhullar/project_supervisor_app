@@ -10,6 +10,7 @@ class ProjectIdeasScreen extends StatefulWidget {
 
 class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
   String searchText = '';
+  String selectedResearchArea = 'All';
 
      final List<ProjectIdea> projectIdeas = const [
       ProjectIdea(
@@ -41,12 +42,17 @@ class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
   Widget build(BuildContext context) {
     final List<ProjectIdea> filteredProjectIdeas =
         projectIdeas.where((ProjectIdea projectIdea) {
-      return projectIdea.title
+      final bool matchesSearchText = projectIdea.title
               .toLowerCase()
               .contains(searchText.toLowerCase()) ||
           projectIdea.researchArea
               .toLowerCase()
               .contains(searchText.toLowerCase());
+      
+      final bool matchesResearchArea = selectedResearchArea == 'All' ||
+          projectIdea.researchArea == selectedResearchArea;
+      
+      return matchesSearchText && matchesResearchArea;
     }).toList();
 
     return Scaffold(
@@ -67,6 +73,42 @@ class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
                 setState(() {
                   this.searchText = searchText;
                 });
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            child: DropdownButtonFormField<String>(
+              initialValue: selectedResearchArea,
+              decoration: const InputDecoration(
+                labelText: 'Filter by research area',
+                prefixIcon: Icon(Icons.filter_list),
+                border: OutlineInputBorder(),
+              ),
+              items: const [
+                DropdownMenuItem(
+                  value: 'All',
+                  child: Text('All research areas'),
+                ),
+                DropdownMenuItem(
+                  value: 'Mobile Application Development',
+                  child: Text('Mobile Application Development'),
+                ),
+                DropdownMenuItem(
+                  value: 'Artificial Intelligence',
+                  child: Text('Artificial Intelligence'),
+                ),
+                DropdownMenuItem(
+                  value: 'Cybersecurity',
+                  child: Text('Cybersecurity'),
+                ),
+              ],
+              onChanged: (String? value) {
+                if (value != null) {
+                  setState(() {
+                    selectedResearchArea = value;
+                  });
+                }
               },
             ),
           ),
