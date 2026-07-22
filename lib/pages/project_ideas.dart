@@ -9,7 +9,7 @@ class ProjectIdeasScreen extends StatefulWidget {
 }
 
 class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
-  String searchText = ' ';
+  String searchText = '';
 
      final List<ProjectIdea> projectIdeas = const [
       ProjectIdea(
@@ -36,7 +36,7 @@ class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
         researchArea: 'Cybersecurity',
       ),
      ];
-     
+
   @override
   Widget build(BuildContext context) {
     final List<ProjectIdea> filteredProjectIdeas =
@@ -64,17 +64,25 @@ class _ProjectIdeasScreenState extends State<ProjectIdeasScreen> {
                 border: OutlineInputBorder(),
               ),
               onChanged: (String searchText) {
-                // ignore: avoid_print
-                print('Search: $searchText');
+                setState(() {
+                  this.searchText = searchText;
+                });
               },
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-              itemCount: filteredProjectIdeas.length,
-              itemBuilder: (BuildContext context, int index) {
-                final ProjectIdea projectIdea = filteredProjectIdeas[index];
+            child: filteredProjectIdeas.isEmpty
+                ? const Center(
+                    child: Text(
+                      'No project ideas found.',
+                    ),
+                  )
+                : ListView.builder(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    itemCount: filteredProjectIdeas.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final ProjectIdea projectIdea =
+                          filteredProjectIdeas[index];
 
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
